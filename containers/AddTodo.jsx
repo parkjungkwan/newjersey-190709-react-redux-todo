@@ -4,12 +4,6 @@ import { addTodo } from '../actions'
 
 
 class AddTodo extends Component{
-    constructor(){
-        super()
-        this.state = {input:''}
-        this.createTodo = this.createTodo.
-        this.inputNode = this.inputNode.bind(this)
-    }
 
     render(){
         return (
@@ -23,16 +17,17 @@ class AddTodo extends Component{
             </div>
           )
     }
-    createTodo(e){
+    createTodo=(e)=>{
         e.preventDefault()
-        if (!this.state.input.value.trim()) {
+        const input = this.input
+        if (!input.value.trim()) {
             return
         }
-        dispatch(addTodo(this.state.input.value))
-        this.state.input.value = ''
+        this.props.dispatch(addTodo(input.value))
+        input.value = ''
     }
-    inputNode(node){
-        this.state.input = node
+    inputNode=(node)=>{
+        this.input = node
     }
 
 }
